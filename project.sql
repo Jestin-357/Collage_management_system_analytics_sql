@@ -4,6 +4,8 @@ use project;
 show tables;
 
 drop table courses;
+
+# creating the  tables
 create table  courses (
     course_id INT,
     course_name varchar(36),
@@ -105,7 +107,7 @@ select * from  enrollments;
 select * from Faculty;
 
 
-# Get the average grade for each student (considering A=4,B=3, C=2, D=1, F=0).
+#1. Get the average grade for each student (considering A=4,B=3, C=2, D=1, F=0).
 
 select s.studentid, 
     s.Name, 
@@ -125,7 +127,7 @@ on s.studentid = e.student_id
 group by s.studentid,s.name;
 
 
-# list all instructors who are teaching a course with fewer than 3 students enrolled.
+#2. list all instructors who are teaching a course with fewer than 3 students enrolled.
 
 
 select * from students;
@@ -153,7 +155,7 @@ group by
     having count(e.student_id) < 3;
 
 
-# Find the total number of credits each student has earned, grouped by their major.
+#3. Find the total number of credits each student has earned, grouped by their major.
 
 
 select * from courses;
@@ -178,14 +180,14 @@ ORDER BY
     s.major;
 
 
-#Find the average salary of instructors in each department.
+#4. Find the average salary of instructors in each department.
 
 select * from `Faculty`;
 Select department, avg(salary) as avg_salary
 from `Faculty`
 group by department;
 
-# List all courses that are taught by more than one instructor . 
+#5. List all courses that are taught by more than one instructor . 
 
 select * from courses;
 SELECT 
@@ -199,7 +201,7 @@ HAVING
     COUNT(DISTINCT instructor_id) > 1;
 
 
-# List the top 3 students with the highest number of credits earned.
+#6. List the top 3 students with the highest number of credits earned.
 
 
 select * from students;
